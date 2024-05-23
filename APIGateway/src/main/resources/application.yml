@@ -1,0 +1,21 @@
+server:
+  port: 8500
+ 
+spring:
+  application:
+    name: APIGateway
+  cloud:
+    gateway:
+        routes:
+        - id: CITIZENSERVICE
+          uri:
+            lb://CITIZENSERVICE
+          predicates:
+          - Path=/citizen/**
+          
+        - id: VACCINATIONSERVICE
+          uri:
+            lb://VACCINATIONSERVICE
+          predicates:
+          - Path=/vaccination/**
+
